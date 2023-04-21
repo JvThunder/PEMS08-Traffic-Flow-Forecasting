@@ -43,12 +43,15 @@ Judging from the distribution of `flow`, `occupy`, and `speed`, it seems that th
 
 ### Correlation
 From the correlation analysis, there is a strong correlation (above $0.7$) between the features. The correlation between the current and the future features $(t+1)$ is significant as well. 
+<figure>
+    <img src="https://user-images.githubusercontent.com/26087840/233602261-8622f2cd-b8bc-4964-a301-a95ccdda6f2f.png" width="720px"></img>
+    <figcaption>Correlation Tabe
+</figure>
 
-<img src="https://user-images.githubusercontent.com/26087840/233602261-8622f2cd-b8bc-4964-a301-a95ccdda6f2f.png" width="720px"></img>
 
 
 ### Periodogram
-Periodogram uses Discrete-time Fourier transform to examining frequency of a time series. The analysis using periodogram proves that the existence of a significant recurring pattern in `occupy`, in which it recurs daily. 
+Periodogram uses Discrete-time Fourier transform to examine the frequency/periodicity of a time series. This analysis proves the existence of a significant recurring pattern in `occupy`, in which it recurs daily. This make sense because of the number of people driving depends on the hour of the day, since people work and commute on a fixed schedule (e.g. busy hours after work will have higher traffic)
 
 <img src="https://user-images.githubusercontent.com/26087840/233600486-30586112-de96-4e0a-a605-eee9bf70cf77.png" width="720px"></img>
 
