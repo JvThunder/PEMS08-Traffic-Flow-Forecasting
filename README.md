@@ -144,6 +144,7 @@ To conclude, we have made a predictive model using an LSTM neural network. We in
 - **EDA and Visualization:**
 - **Modelling and Tuning:**
 - **Evaluation:**
+- **Notebook Comments:**
 - **Presentation:**
 - **GitHub README:**
 
