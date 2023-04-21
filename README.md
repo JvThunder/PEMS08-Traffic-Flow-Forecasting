@@ -1,7 +1,22 @@
 # Traffic Flow Forecasting
 This is a mini-project for SC1015 (Introduction to Data Science & Artificial Intelligence) AY22/23 Semester 2.
+
+The contributors for this project are:
+- Bryan Atista Kiely ([@Brytista](https://github.com/Brytista))
+- Clayton Fernalo ([@sanstzu](https://github.com/sanstzu))
+- Joshua Adrian Cahyono ([@JvThunder](https://github.com/JvThunder))
+
+**Table of Contents**
+1. [Introduction](#introduction)
+2. [Exploratory Data Analysis (EDA) and Data Preparation](#exploratory-data-analysis-eda-and-data-preparation)
+3. [Methodology](#methodology)
+4. [Evaluation](#evaluation)
+5. [Limitations and Improvements](#limitations-and-improvements)
+6. [Conclusion](#conclusion)
+7. [References](#references)
+
 ## Introduction
-This focuses on predicting hourly traffic flow using the [`PEMS-08 Dataset`](https://doi.org/10.1609/aaai.v33i01.3301922). This dataset contains the traffic data of 170 locations in San Bernardino from July 2016 to August in 2016, recorded using a detector every 5-minute interval. The given dataset is in a dimension of $(17856, 170, 3)$:
+This focuses on predicting hourly traffic flow using the PEMS-08 Dataset (see [References](#references)). This dataset contains the traffic data of 170 locations in San Bernardino from July 2016 to August in 2016, recorded using a detector in a 5-minute interval. The given dataset is in a dimension of $(17856, 170, 3)$:
 1. The first dimension ($17856$) refers to the number of 5-minute intervals data collected.
 2. The second dimension ($170$) refers to the location of the data.
 3. The third dimension ($3$) corresponds to the `flow`, `occupy`, and `speed`.
@@ -18,9 +33,9 @@ For $N$ prediction of the `occupy` variable and $K$ locations, make a predictive
 
 ## Exploratory Data Analysis (EDA) and Data Preparation
 For the EDA, we performed several analysis on the dataset which includes:
-- Data Visualization
-- Correlation
-- Periodogram
+- [Data Visualization](#data-visualization)
+- [Correlation](#correlation)
+- [Periodogram](#periodogram)
 
 
 ### Data Visualization
@@ -33,7 +48,7 @@ From the correlation analysis, there is a strong correlation (above $0.7$) betwe
 
 
 ### Periodogram
-The analysis using periodogram proves that the existence of a significant recurring pattern in `occupy`, in which it recurs daily. 
+Periodogram uses Discrete-time Fourier transform to examining frequency of a time series. The analysis using periodogram proves that the existence of a significant recurring pattern in `occupy`, in which it recurs daily. 
 
 <img src="https://user-images.githubusercontent.com/26087840/233600486-30586112-de96-4e0a-a605-eee9bf70cf77.png" width="720px"></img>
 
@@ -46,7 +61,7 @@ The analysis using periodogram proves that the existence of a significant recurr
 
 
 ## Methodology
-To predict the time-series data, we used Neural Network from Keras library. Our model mainly utilizes the `LSTM` layer, due to its capability to remember information from earlier timesteps and gain information from their relation. In addition to `LSTM`, we also used the standard `Dense` layer, as well as `Dropout` layer to introduce noise to the model and reduce the chance of overfitting.
+To predict the time series, we used Neural Network from Keras library. Our model mainly utilizes the `LSTM` layer, due to its capability to remember information from earlier timesteps and gain information from their relation. In addition to `LSTM`, we also used the standard `Dense` layer, as well as `Dropout` layer to introduce noise to the model and reduce the chance of overfitting.
 
 Here is the details of the model (arranged from input to output):
 | Layer Type  | Input Shape | Output Shape|
@@ -111,10 +126,6 @@ Despite that our model better than the baseline, there are several improvement t
 ## Conclusion
 To conclude, we have made a predictive model using an LSTM neural network. We included hour and lag features, and also carefully scale and split the data. In the end, our model was able to predict both the train and test data better than our baseline which is moving average of previous values. We believe that this model can be further optimized and tested to help solve one of the real world issues, which is traffic management.
 
-## Contributors
-- Bryan Atista Kiely (@Brytista)
-- Clayton Fernalo (@sanstzu)
-- Joshua Adrian Cahyono (@JvThunder)
 
 ## References
 - Guo, S., Lin, Y., Feng, N., Song, C., & Wan, H. (2019). Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 922-929. https://doi.org/10.1609/aaai.v33i01.3301922
