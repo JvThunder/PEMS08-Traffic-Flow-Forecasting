@@ -1,4 +1,11 @@
-# Traffic Flow Forecasting
+# PEMS08 Traffic Flow Forecasting 
+
+[![stars - PEMS08-Traffic-Flow-Forecasting](https://img.shields.io/github/stars/JvThunder/PEMS08-Traffic-Flow-Forecasting?style=social)](https://github.com/JvThunder/PEMS08-Traffic-Flow-Forecasting)
+[![forks - PEMS08-Traffic-Flow-Forecasting](https://img.shields.io/github/forks/JvThunder/PEMS08-Traffic-Flow-Forecasting?style=social)](https://github.com/JvThunder/PEMS08-Traffic-Flow-Forecasting)
+[![GitHub - Brytista](https://img.shields.io/static/v1?label=GitHub&message=Brytista&color=lightgrey&logo=github)](https://github.com/Brytista)
+[![GitHub - JvThunder](https://img.shields.io/static/v1?label=GitHub&message=JvThunder&color=lightgrey&logo=github)](https://github.com/JvThunder)
+[![GitHub - sanstzu](https://img.shields.io/static/v1?label=GitHub&message=sanstzu&color=lightgrey&logo=github)](https://github.com/sanstzu)
+
 This is a mini-project for SC1015 (Introduction to Data Science & Artificial Intelligence) AY22/23 Semester 2.
 
 The contributors for this project are:
@@ -16,7 +23,7 @@ The contributors for this project are:
 7. [References](#references)
 
 ## Introduction
-This focuses on predicting hourly traffic flow using the PEMS-08 Dataset (see [References](#references)). This dataset contains the traffic data of 170 locations in San Bernardino from July 2016 to August in 2016, recorded using a detector in a 5-minute interval. The given dataset is in a dimension of $(17856, 170, 3)$:
+This project is focused on predicting the hourly traffic flow using the PEMS-08 Dataset (see [References](#references)). This dataset contains the traffic data of 170 locations in San Bernardino from July 2016 to August in 2016, recorded using a detector in a 5-minute interval. The given dataset is in a dimension of $(17856, 170, 3)$:
 1. The first dimension ($17856$) refers to the number of 5-minute intervals data collected.
 2. The second dimension ($170$) refers to the location of the data.
 3. The third dimension ($3$) corresponds to the `flow`, `occupy`, and `speed`.
@@ -60,11 +67,13 @@ Periodogram uses Discrete-time Fourier transform to examine the frequency/period
 - Due to the difference in the order of magnitude of each features, the input data for each of the features is normalized using `MinMaxScaler`.
 - From the result of periodogram, an additional feature is appended to indicate the hour of which the data is recorded in format of one-hot encodings.
 - The 5-minute interval data is averaged to form a 60-minute interval data (see [Limitations and Improvements](#limitations-and-improvements)).
-- A lag step of $24$ previous values is appended for the Long-short Term Memory (LSTM) networks.
+- A lag step of $24$ previous values is appended as the input for the Neural Network.
+
+In the end, we created $(1464, 24, 27, 170)$-array as an input and $(1464, 170)-array as an output, then we would split into training data (72%), validation data (8%) and test data (20%).
 
 
 ## Methodology
-To predict the time series, we used Neural Network from Keras library. Our model mainly utilizes the `LSTM` layer, due to its capability to remember information from earlier timesteps and gain information from their relation. In addition to `LSTM`, we also used the standard `Dense` layer, as well as `Dropout` layer to introduce noise to the model and reduce the chance of overfitting.
+To predict the time series, we used Neural Network from Keras library. Our model mainly utilizes the `Long-Short Term Memory (LSTM)` layer, due to its capability to remember information from earlier timesteps and gain information from their relation. In addition to `LSTM`, we also used the standard `Dense` layer, as well as `Dropout` layer to introduce noise to the model and reduce the chance of overfitting.
 
 Here is the details of the model (arranged from input to output):
 | Layer Type  | Input Shape | Output Shape|
