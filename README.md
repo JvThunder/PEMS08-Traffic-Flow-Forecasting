@@ -24,26 +24,29 @@ For the EDA, we performed several analysis on the dataset which includes:
 
 
 ### Data Visualization
-Judging from the distribution of `flow`, `occupy`, and `speed`, it seems that they follow a slightly-skewed normal distribution. Due to the difference in the order of magnitude of each individual features, we normalized the input data for each of the features using `MinMaxScaler`.
-
-In addition to normalized distribution, the wave pattern on `occupy` and `flow` signifies that there is a seasonality in those features. To find the exact seasonality in `occupy`, which we would predict, we can use a periodogram later on.
+Judging from the distribution of `flow`, `occupy`, and `speed`, it seems that they follow a slightly-skewed normal distribution. In addition to normalized distribution, the wave pattern on `occupy` and `flow` signifies that there is a seasonality in those features. To find the exact seasonality in `occupy`, the feature we were trying predict, we would use a periodogram later on.
 
 ### Correlation
-From the correlation analysis, there is a significant correlation between the features. Of course in any time series prediction, lag features are used as the main features. Specifically, $k$ lag features means that we use the last $k$ values to predict the next value. So, it is a good measure to check the correlation of present $(t_n)$ and future $(t_{n+k})$ values.
-The below shows the correlation between the current features and the future $(k=1)$
-![image](https://user-images.githubusercontent.com/26087840/233602261-8622f2cd-b8bc-4964-a301-a95ccdda6f2f.png)
+From the correlation analysis, there is a strong correlation (above $0.7$) between the features. The correlation between the current and the future features $(t+1)$ is significant as well. 
+
+<img src="https://user-images.githubusercontent.com/26087840/233602261-8622f2cd-b8bc-4964-a301-a95ccdda6f2f.png" width="720px"></img>
+
 
 ### Periodogram
-The analysis using periodogram proves that the existence of a significant recurring pattern in `occupy`, in which it recurs daily.
-![image](https://user-images.githubusercontent.com/26087840/233600486-30586112-de96-4e0a-a605-eee9bf70cf77.png)
+The analysis using periodogram proves that the existence of a significant recurring pattern in `occupy`, in which it recurs daily. 
+
+<img src="https://user-images.githubusercontent.com/26087840/233600486-30586112-de96-4e0a-a605-eee9bf70cf77.png" width="720px"></img>
 
 
-
-From the EDA, we appended features to indicate the hour of which the data is recorded in format of one-hot encoding to improve our model.
+### Data Preparation
+- Due to the difference in the order of magnitude of each features, the input data for each of the features is normalized using `MinMaxScaler`.
+- From the result of periodogram, an additional feature is appended to indicate the hour of which the data is recorded in format of one-hot encodings.
+- The 5-minute interval data is averaged to form a 60-minute interval data (see [Limitations and Improvements](#limitations-and-improvements)).
+- A lag step of $24$ previous values is appended for the Long-short Term Memory (LSTM) networks.
 
 
 ## Methodology
-To predict the time-series data, we uses Recurrent Neural Network (RNN). Our model utilizes `LSTM` layer, due to its capability to remember information from earlier timesteps and gain information from their relation. In addition to `LSTM`, we also used the standard `Dense` layer, as well as `Dropout` layer to introduce noise to the model and reduce the chance of overfitting.
+To predict the time-series data, we used Neural Network from Keras library. Our model mainly utilizes the `LSTM` layer, due to its capability to remember information from earlier timesteps and gain information from their relation. In addition to `LSTM`, we also used the standard `Dense` layer, as well as `Dropout` layer to introduce noise to the model and reduce the chance of overfitting.
 
 Here is the details of the model (arranged from input to output):
 | Layer Type  | Input Shape | Output Shape|
@@ -63,28 +66,33 @@ We used `Mean Squared Error (MSE)` for the loss function of the training and `Ro
 ### Hyperparameters
 The training process used $150$ epochs and the standard batch size of $32$.
 
-One thing to note is that `val_loss` began to plateau around $120$ epochs whilst `loss` kept decreasing, thus we used a value close to that ($150$ epochs) to avoid the risk of overfitting.
+One thing to note is that `val_root_mean_squared_error` (validation RMSE) began to plateau around $120$ epochs whilst `root_mean_squared` (training RMSE) kept decreasing, thus we used a value close to that ($150$ epochs) to avoid the risk of overfitting.
 
-(to be uploaded model image once final)
+<img src="https://user-images.githubusercontent.com/26087840/233721404-abb860b9-07f2-40ef-b0b5-1be5257377ab.png" width="720px"></img>
+
+
 
 ## Evaluation
-To test whether our model is better than a random guessing, we compared it with a baseline, that is the Moving Average. The comparison was performed using these metrics:
+
+<img src="https://user-images.githubusercontent.com/26087840/233722022-2137727e-6200-4222-874d-802a7281892c.png" width="720px"></img>
+
+Visually, we can see that our model managed to pick up the pattern on the dataset. To truly know whether our model is better than a random guessing, we quantitatively compared the model with a baseline, which would be Moving Average. The comparison was performed using these metrics:
 1. RMSE (lower means better)
 2. Spearman Correlation (higher means better)
 
-### Training Set
+### Training Data
 |Metric|Baseline  Value|Prediction Value|
 |-|-|-|
 |RMSE|0.02385027817581988|0.01451811135755047|
-|Spearman Correlation|0.7151104327649883|0.80599578910884|
+|Spearman|0.7151104327649883|0.80599578910884|
 
 Using the training dataset, the Spearman correlation and the RMSE of the model is better than the baseline. So we can conclude that our model managed to learn from the training set and not underfit. However, the true test lies on the test evaluation (since Neural Network models might overfit).
 
-### Test Set
+### Test Data
 |Metric|Baseline  Value|Prediction Value|
 |-|-|-|
 |RMSE|0.026519227318993185|0.019782170402918516|
-|Spearman Correlation|0.7208934552099153|0.8191585132042268|
+|Spearman|0.7208934552099153|0.8191585132042268|
 
 The same pattern also exhibits when the test data is used instead, meaning that it does not overfit to the training set. Therefore, it is suffice to say that our model is neither underfitting nor overfitting.
 ## Limitations and Improvements
@@ -100,9 +108,14 @@ Despite that our model better than the baseline, there are several improvement t
     - This is an issue in `LSTM` layer.
     - This issue is addressed using Attention Layers.
 
+## Conclusion
+To conclude, we have made a predictive model using an LSTM neural network. We included hour and lag features, and also carefully scale and split the data. In the end, our model was able to predict both the train and test data better than our baseline which is moving average of previous values. We believe that this model can be further optimized and tested to help solve one of the real world issues, which is traffic management.
+
 ## Contributors
 - Bryan Atista Kiely (@Brytista)
 - Clayton Fernalo (@sanstzu)
 - Joshua Adrian Cahyono (@JvThunder)
 
 ## References
+- Guo, S., Lin, Y., Feng, N., Song, C., & Wan, H. (2019). Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 922-929. https://doi.org/10.1609/aaai.v33i01.3301922
+- ChatGPT is used for debugging and clarification of concepts.
