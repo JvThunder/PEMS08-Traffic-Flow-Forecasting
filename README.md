@@ -53,11 +53,8 @@ Judging from the distribution of `flow`, `occupy`, and `speed`, it seems that th
 
 ### Correlation
 From the correlation analysis, there is a strong correlation (above $0.7$) between the features. The correlation between the current and the future features $(t+1)$ is significant as well. 
-<figure>
-    <img src="https://user-images.githubusercontent.com/26087840/233602261-8622f2cd-b8bc-4964-a301-a95ccdda6f2f.png" width="720px"></img>
-    <figcaption>Correlation Tabe
-</figure>
 
+<img src="https://user-images.githubusercontent.com/26087840/233602261-8622f2cd-b8bc-4964-a301-a95ccdda6f2f.png" width="720px"></img>
 
 
 ### Periodogram
