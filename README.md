@@ -52,7 +52,7 @@ For the EDA, we performed several analysis on the dataset which includes:
 Judging from the distribution of `flow`, `occupy`, and `speed`, it seems that they follow a slightly-skewed normal distribution. In addition to normalized distribution, the wave pattern on `occupy` and `flow` signifies that there is a seasonality in those features. To find the exact seasonality in `occupy`, the feature we were trying predict, we would use a periodogram later on.
 
 ### Correlation
-From the correlation analysis, there is a strong correlation (above $0.7$) between the features. The correlation between the current and the future features $(t+1)$ is significant as well. 
+From the correlation table, there is a strong correlation (above $0.7$) between the features. The correlation between the current and the future features $(t+1)$ is significant as well. 
 
 <img src="https://user-images.githubusercontent.com/26087840/233602261-8622f2cd-b8bc-4964-a301-a95ccdda6f2f.png" width="720px"></img>
 
