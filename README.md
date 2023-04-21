@@ -22,7 +22,8 @@ The contributors for this project are:
 4. **[Evaluation](#evaluation)**
 5. **[Limitations and Improvements](#limitations-and-improvements)**
 6. **[Conclusion](#conclusion)**
-7. **[References](#references)**
+7. **[Contributions](#contributions)**
+8. **[References](#references)**
 
 ## Introduction
 This project is focused on predicting the hourly traffic flow using the PEMS-08 Dataset (see [References](#references)). This dataset contains the traffic data of 170 locations in San Bernardino from July 2016 to August in 2016, recorded using a detector in a 5-minute interval. The given dataset is in a dimension of $(17856, 170, 3)$:
@@ -140,6 +141,14 @@ Despite that our model better than the baseline, there are several improvement t
 ## Conclusion
 To conclude, we have made a predictive model using an LSTM neural network. We included hour and lag features, and also carefully scale and split the data. In the end, our model was able to predict both the train and test data better than our baseline which is moving average of previous values. We believe that this model can be further optimized and tested to help solve one of the real world issues, which is traffic management.
 
+## Contributions
+- **Data Collection:**
+- **Data Cleaning and Preprocessing:**
+- **EDA and Visualization:**
+- **Modelling and Tuning:**
+- **Evaluation:**
+- **Presentation:**
+- **GitHub README:**
 
 ## References
 - Guo, S., Lin, Y., Feng, N., Song, C., & Wan, H. (2019). Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 922-929. https://doi.org/10.1609/aaai.v33i01.3301922.
