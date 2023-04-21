@@ -13,14 +13,16 @@ The contributors for this project are:
 - Clayton Fernalo ([@sanstzu](https://github.com/sanstzu))
 - Joshua Adrian Cahyono ([@JvThunder](https://github.com/JvThunder))
 
+---
+
 **Table of Contents**
-1. [Introduction](#introduction)
-2. [Exploratory Data Analysis (EDA) and Data Preparation](#exploratory-data-analysis-eda-and-data-preparation)
-3. [Methodology](#methodology)
-4. [Evaluation](#evaluation)
-5. [Limitations and Improvements](#limitations-and-improvements)
-6. [Conclusion](#conclusion)
-7. [References](#references)
+1. **[Introduction](#introduction)**
+2. **[Exploratory Data Analysis (EDA) and Data Preparation](#exploratory-data-analysis-eda-and-data-preparation)**
+3. **[Methodology](#methodology)**
+4. **[Evaluation](#evaluation)**
+5. **[Limitations and Improvements](#limitations-and-improvements)**
+6. **[Conclusion](#conclusion)**
+7. **[References](#references)**
 
 ## Introduction
 This project is focused on predicting the hourly traffic flow using the PEMS-08 Dataset (see [References](#references)). This dataset contains the traffic data of 170 locations in San Bernardino from July 2016 to August in 2016, recorded using a detector in a 5-minute interval. The given dataset is in a dimension of $(17856, 170, 3)$:
@@ -140,5 +142,8 @@ To conclude, we have made a predictive model using an LSTM neural network. We in
 
 
 ## References
-- Guo, S., Lin, Y., Feng, N., Song, C., & Wan, H. (2019). Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 922-929. https://doi.org/10.1609/aaai.v33i01.3301922
-- ChatGPT is used for debugging and clarification of concepts.
+- Guo, S., Lin, Y., Feng, N., Song, C., & Wan, H. (2019). Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 922-929. https://doi.org/10.1609/aaai.v33i01.3301922.
+- ChatGPT is used for debugging, clarification of concepts, and the writing of comments and descriptions.
+- Special thanks to our Lab TA Ng Wen Zheng Terence for providing valuable feedbacks for our project.
+    <img src="https://user-images.githubusercontent.com/26087840/233735987-30b47e33-90ab-4a2d-870a-8e5546578256.png" width="480px"></img>
+
