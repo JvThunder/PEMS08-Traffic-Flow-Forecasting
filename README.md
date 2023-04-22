@@ -118,15 +118,7 @@ One thing to note is that `val_root_mean_squared_error` (validation RMSE) began 
 
 <img src="https://user-images.githubusercontent.com/26087840/233793082-1b7b7063-4d9f-45e7-993c-a3671b83d83c.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233793084-ebf0edf1-6231-4c28-b357-cf7291c33d57.png" width="480px">
 
-![image]()
-![image]()
-
-
-
-
 ## Evaluation
-
-
 
 Visually, we can see that our model managed to pick up the pattern on the dataset. To truly know whether our model is better than a random guessing, we quantitatively compared the model with a baseline, which would be Moving Average. The comparison was performed using these metrics:
 1. **RMSE** (lower means better)
