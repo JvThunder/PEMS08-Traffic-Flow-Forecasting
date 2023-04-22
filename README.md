@@ -160,7 +160,9 @@ Despite that our model is better than the baseline, there are several improvemen
 
 ## References
 - Guo, S., Lin, Y., Feng, N., Song, C., & Wan, H. (2019). Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 922-929. https://doi.org/10.1609/aaai.v33i01.3301922.
+- Black, S. (2020, November). What's happening in my LSTM layer? Towards Data Science. https://towardsdatascience.com/whats-happening-in-my-lstm-layer-dd8110ecc52f
 - ChatGPT is used for debugging, clarification of concepts, and the writing of comments and descriptions.
+- DALL-E 2 is used for generating the banner image in this README document.
 - Special thanks to our Lab TA Ng Wen Zheng Terence for providing valuable feedbacks for our project.
     <img src="https://user-images.githubusercontent.com/26087840/233735987-30b47e33-90ab-4a2d-870a-8e5546578256.png" width="480px"></img>
 
