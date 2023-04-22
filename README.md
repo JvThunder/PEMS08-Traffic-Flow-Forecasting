@@ -8,10 +8,15 @@
 
 *This is a mini-project for SC1015 (Introduction to Data Science & Artificial Intelligence) AY22/23 Semester 2.*
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/26087840/233774521-bd770aef-d777-48f7-b098-825e1e837068.png" width="100%x"></img>
+</p>
+
+
 The contributors for this project are:
-- Bryan Atista Kiely ([@Brytista](https://github.com/Brytista))
-- Clayton Fernalo ([@sanstzu](https://github.com/sanstzu))
-- Joshua Adrian Cahyono ([@JvThunder](https://github.com/JvThunder))
+- **Bryan Atista Kiely** ([@Brytista](https://github.com/Brytista))
+- **Clayton Fernalo** ([@sanstzu](https://github.com/sanstzu))
+- **Joshua Adrian Cahyono** ([@JvThunder](https://github.com/JvThunder))
 
 ---
 
