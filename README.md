@@ -32,7 +32,7 @@ Video presentation for this project: [YouTube](https://www.youtube.com/watch?v=f
 7. **[References](#references)**
 
 ## Introduction
-This project is focused on predicting the hourly traffic flow using the PEMS-08 Dataset (see [References](#references)). This dataset contains the traffic data of 170 locations in San Bernardino from July 2016 to August in 2016, recorded using a detector in a 5-minute interval. The given dataset is in a dimension of $(17856, 170, 3)$:
+This project is focused on predicting the hourly traffic flow using the PEMS-08 Dataset (see [References](#references)). This dataset contains the traffic data of 170 locations in San Bernardino from July to August 2016, recorded using a detector in a 5-minute interval. The given dataset is in a dimension of $(17856, 170, 3)$:
 1. The first dimension ($17856$) refers to the number of 5-minute intervals data collected.
 2. The second dimension ($170$) refers to the location of the data.
 3. The third dimension ($3$) corresponds to three spatiotemporal features.
