@@ -64,13 +64,13 @@ Judging from the distribution of `flow`, `occupy`, and `speed`, it seems that th
 Respectively, below are the value distribution and time series (in an example location) of each features.
 
 #### `flow`
-<img src="https://user-images.githubusercontent.com/26087840/233772662-f884bf73-9cd0-4522-b260-d04be554800a.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233790642-0c018964-dfe6-4f4f-8bce-8eefd3a96295.png" width="480px">
+<img src="https://user-images.githubusercontent.com/26087840/233772662-f884bf73-9cd0-4522-b260-d04be554800a.png" width="360px"><img src="https://user-images.githubusercontent.com/26087840/233790642-0c018964-dfe6-4f4f-8bce-8eefd3a96295.png" width="360px">
 
 #### `occupy`
-<img src="https://user-images.githubusercontent.com/26087840/233790580-04501d2e-c267-4dd0-b6f4-3fc290925919.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233790668-16ca294a-9162-44cf-a087-2e8147619d12.png" width="480px">
+<img src="https://user-images.githubusercontent.com/26087840/233790580-04501d2e-c267-4dd0-b6f4-3fc290925919.png" width="360px"><img src="https://user-images.githubusercontent.com/26087840/233790668-16ca294a-9162-44cf-a087-2e8147619d12.png" width="360px">
 
 #### `speed`
-<img src="https://user-images.githubusercontent.com/26087840/233790564-26ef70c5-21e7-4012-bcb8-1cbf3582ebfe.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233790699-ef0d1136-5623-4bfc-9cf2-3e0ac169ee69.png" width="480px">
+<img src="https://user-images.githubusercontent.com/26087840/233790564-26ef70c5-21e7-4012-bcb8-1cbf3582ebfe.png" width="360px"><img src="https://user-images.githubusercontent.com/26087840/233790699-ef0d1136-5623-4bfc-9cf2-3e0ac169ee69.png" width="360px">
 
 
 ### Correlation
