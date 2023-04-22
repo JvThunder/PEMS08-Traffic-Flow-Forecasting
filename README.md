@@ -116,21 +116,26 @@ The training process used $150$ epochs and the standard batch size of $32$.
 
 One thing to note is that `val_root_mean_squared_error` (validation RMSE) began to plateau around $120$ epochs whilst `root_mean_squared_error` (training RMSE) kept decreasing, thus we used a value close to that ($150$ epochs) to avoid the risk of overfitting.
 
-<img src="https://user-images.githubusercontent.com/26087840/233721404-abb860b9-07f2-40ef-b0b5-1be5257377ab.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233774627-bb93bbde-6c06-4a9e-b9d6-5070c4b5330d.png" width="480px">
+<img src="https://user-images.githubusercontent.com/26087840/233793082-1b7b7063-4d9f-45e7-993c-a3671b83d83c.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233793084-ebf0edf1-6231-4c28-b357-cf7291c33d57.png" width="480px">
 
+![image]()
+![image]()
 
 
 
 
 ## Evaluation
 
-<img src="https://user-images.githubusercontent.com/26087840/233722022-2137727e-6200-4222-874d-802a7281892c.png" width="720px"></img>
+
 
 Visually, we can see that our model managed to pick up the pattern on the dataset. To truly know whether our model is better than a random guessing, we quantitatively compared the model with a baseline, which would be Moving Average. The comparison was performed using these metrics:
 1. **RMSE** (lower means better)
 2. **Spearman Correlation** (higher means better)
 
 ### Training Data
+
+<img src="https://user-images.githubusercontent.com/26087840/233793148-84b032b3-bfea-40a1-8166-893bacfd91fd.png" width="480px">
+
 |Metric|Baseline  Value|Prediction Value|
 |-|-|-|
 |RMSE|0.02385027817581988|0.01451811135755047|
@@ -139,6 +144,9 @@ Visually, we can see that our model managed to pick up the pattern on the datase
 Using the training dataset, the Spearman correlation and the RMSE of the model is better than the baseline. So we can conclude that our model managed to learn from the training data and not underfit. However, the true test lies on the test evaluation (since Neural Network models might overfit).
 
 ### Test Data
+
+<img src="https://user-images.githubusercontent.com/26087840/233793150-b9ffee2c-381f-4f47-bad4-0cc9397c87a4.png" width="480px">
+
 |Metric|Baseline  Value|Prediction Value|
 |-|-|-|
 |RMSE|0.026519227318993185|0.019782170402918516|
