@@ -138,8 +138,8 @@ Visually, we can see that our model managed to pick up the pattern on the datase
 
 |Metric|Baseline  Value|Prediction Value|
 |-|-|-|
-|RMSE|0.02385027817581988|0.01451811135755047|
-|Spearman|0.7151104327649883|0.80599578910884|
+|RMSE|0.02385027817581988|0.014617505445449574|
+|Spearman|0.7151104327649883|0.8099964732378614|
 
 Using the training dataset, the Spearman correlation and the RMSE of the model is better than the baseline. So we can conclude that our model managed to learn from the training data and not underfit. However, the true test lies on the test evaluation (since Neural Network models might overfit).
 
@@ -149,8 +149,8 @@ Using the training dataset, the Spearman correlation and the RMSE of the model i
 
 |Metric|Baseline  Value|Prediction Value|
 |-|-|-|
-|RMSE|0.026519227318993185|0.019782170402918516|
-|Spearman|0.7208934552099153|0.8191585132042268|
+|RMSE|0.026519227318993185|0.019622971885630787|
+|Spearman|0.7208934552099153|0.8220546305826915|
 
 The same pattern also exhibits when the test data is used instead, meaning that it does not overfit to the training set and generalized enough. Therefore, it is suffice to say that our model is neither underfitting nor overfitting.
 
