@@ -84,7 +84,7 @@ Periodogram uses Discrete-time Fourier transform to examine the frequency/period
 - The 5-minute interval data is averaged to form a 60-minute interval data (see [Limitations and Improvements](#limitations-and-improvements)).
 - A lag step of $24$ previous values is appended as the input for the Neural Network.
 
-In the end, we created $(1464, 24, 27, 170)$-array as an input and $(1464, 170)-array as an output, then we would split into training data (72%), validation data (8%) and test data (20%).
+In the end, we created $(1464, 24, 27, 170)$-array as an input, which will be converted into $(1462, 24, 4590)$-array, and $(1464, 170)-array as an output. Then, we splitted these data into a contiguous training data (72%), validation data (8%) and test data (20%).
 
 
 ## Methodology
