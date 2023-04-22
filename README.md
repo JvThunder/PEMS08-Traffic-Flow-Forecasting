@@ -18,6 +18,8 @@ The contributors for this project are:
 - **Clayton Fernalo** ([@sanstzu](https://github.com/sanstzu))
 - **Joshua Adrian Cahyono** ([@JvThunder](https://github.com/JvThunder))
 
+Video presentation for this project: [YouTube](https://www.youtube.com/watch?v=fCr8xAntYzM)
+
 ---
 
 **Table of Contents**
@@ -57,13 +59,18 @@ For the EDA, we performed several analysis on the dataset which includes:
 
 
 ### Data Visualization
-Judging from the distribution of `flow`, `occupy`, and `speed`, it seems that they follow a slightly-skewed normal distribution (the image is respectively shown below). In addition to normalized distribution, the wave pattern on `occupy` and `flow` signifies that there is a seasonality in those features. To find the exact seasonality in `occupy`, the feature we were trying predict, we would use a periodogram later on.
+Judging from the distribution of `flow`, `occupy`, and `speed`, it seems that they follow a slightly-skewed normal distribution. In addition to normalized distribution, the wavy pattern on `occupy` and `flow` might imply that there is a seasonality in those features. To find the exact seasonality in `occupy`, the feature we were trying predict, we would use a periodogram later on.
 
-<img src="https://user-images.githubusercontent.com/26087840/233772662-f884bf73-9cd0-4522-b260-d04be554800a.png" width="480px"></img>
-<img src="jttps://user-images.githubusercontent.com/26087840/233772665-1b323de8-c203-4820-ad50-43a87efa3565.png" width="480px"></img>
-<img src="https://user-images.githubusercontent.com/26087840/233772669-0e4fc2cc-a906-4cf3-adb6-35d886e3efec.png" width="480px"></img>
+Respectively, below are the value distribution and time series (in an example location) of each features.
 
+#### `flow`
+<img src="https://user-images.githubusercontent.com/26087840/233772662-f884bf73-9cd0-4522-b260-d04be554800a.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233790642-0c018964-dfe6-4f4f-8bce-8eefd3a96295.png" width="480px">
 
+#### `occupy`
+<img src="https://user-images.githubusercontent.com/26087840/233790580-04501d2e-c267-4dd0-b6f4-3fc290925919.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233790668-16ca294a-9162-44cf-a087-2e8147619d12.png" width="480px">
+
+#### `speed`
+<img src="https://user-images.githubusercontent.com/26087840/233790564-26ef70c5-21e7-4012-bcb8-1cbf3582ebfe.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233790699-ef0d1136-5623-4bfc-9cf2-3e0ac169ee69.png" width="480px">
 
 
 ### Correlation
@@ -93,12 +100,12 @@ To predict the time series, we used Neural Network from Keras library. Our model
 Here is the details of the model (arranged from input to output):
 | Layer Type  | Input Shape | Output Shape|
 | - | - | - |
-| LSTM (input) | **(24, 4590)** | (24, 256) |
-| LSTM | (24, 256) | (256) |
-| Dropout | (256) | (256)|
-| Dense | (256) | (256) |
-| Dropout | (256) | (256) |
-| Dropout (output) | (256) | **(170)** |
+| LSTM (input) | **(None, 24, 4590)** | (None, 24, 256) |
+| LSTM | (None, 24, 256) | (None, 256) |
+| Dropout | (None, 256) | (None, 256)|
+| Dense | (None, 256) | (None, 256) |
+| Dropout | (None, 256) | (None, 256) |
+| Dropout (output) | (None, 256) | **(None, 170)** |
 
 We used `Mean Squared Error (MSE)` for the loss function of the training and `Root Mean Squared Error (RMSE)` as an additional metric (which would not be used for the training). For the optimizer, we used `Adam`.
 
@@ -120,8 +127,8 @@ One thing to note is that `val_root_mean_squared_error` (validation RMSE) began 
 <img src="https://user-images.githubusercontent.com/26087840/233722022-2137727e-6200-4222-874d-802a7281892c.png" width="720px"></img>
 
 Visually, we can see that our model managed to pick up the pattern on the dataset. To truly know whether our model is better than a random guessing, we quantitatively compared the model with a baseline, which would be Moving Average. The comparison was performed using these metrics:
-1. RMSE (lower means better)
-2. Spearman Correlation (higher means better)
+1. **RMSE** (lower means better)
+2. **Spearman Correlation** (higher means better)
 
 ### Training Data
 |Metric|Baseline  Value|Prediction Value|
@@ -129,7 +136,7 @@ Visually, we can see that our model managed to pick up the pattern on the datase
 |RMSE|0.02385027817581988|0.01451811135755047|
 |Spearman|0.7151104327649883|0.80599578910884|
 
-Using the training dataset, the Spearman correlation and the RMSE of the model is better than the baseline. So we can conclude that our model managed to learn from the training set and not underfit. However, the true test lies on the test evaluation (since Neural Network models might overfit).
+Using the training dataset, the Spearman correlation and the RMSE of the model is better than the baseline. So we can conclude that our model managed to learn from the training data and not underfit. However, the true test lies on the test evaluation (since Neural Network models might overfit).
 
 ### Test Data
 |Metric|Baseline  Value|Prediction Value|
@@ -137,7 +144,7 @@ Using the training dataset, the Spearman correlation and the RMSE of the model i
 |RMSE|0.026519227318993185|0.019782170402918516|
 |Spearman|0.7208934552099153|0.8191585132042268|
 
-The same pattern also exhibits when the test data is used instead, meaning that it does not overfit to the training set. Therefore, it is suffice to say that our model is neither underfitting nor overfitting.
+The same pattern also exhibits when the test data is used instead, meaning that it does not overfit to the training set and generalized enough. Therefore, it is suffice to say that our model is neither underfitting nor overfitting.
 
 ## Conclusion
 To conclude, we have made a predictive model using an LSTM neural network. We included hour and lag features, and also carefully scale and split the data. In the end, our model was able to predict both the train and test data better than our baseline which is moving average of previous values. We believe that this model can be further optimized and tested to help solve one of the real world issues, which is traffic management.
@@ -154,7 +161,8 @@ Despite that our model is better than the baseline, there are several improvemen
     - Although we were only using a timestep of $24$, the accuracy of the model is suffice in this scope.
 3. **Vanishing Gradient Problem**
     - As the model uses more hidden layers and lag steps, the weight adjustment towards the earlier layers might become insignificant during the backpropagation, hindering the model in achieving higher performance.
-    - This is an issue in `LSTM` layer, which is addressed in Attention Layers.
+    - This is a known issue in `LSTM` layers.
+    - This issue can be resolved by using Attention layers.
 
 
 
@@ -164,5 +172,4 @@ Despite that our model is better than the baseline, there are several improvemen
 - ChatGPT is used for debugging, clarification of concepts, and the writing of comments and descriptions.
 - DALL-E 2 is used for generating the banner image in this README document.
 - Special thanks to our Lab TA Ng Wen Zheng Terence for providing valuable feedbacks for our project.
-    <img src="https://user-images.githubusercontent.com/26087840/233735987-30b47e33-90ab-4a2d-870a-8e5546578256.png" width="480px"></img>
 
