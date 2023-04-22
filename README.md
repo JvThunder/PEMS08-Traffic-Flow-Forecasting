@@ -25,8 +25,8 @@ The contributors for this project are:
 2. **[Exploratory Data Analysis (EDA) and Data Preparation](#exploratory-data-analysis-eda-and-data-preparation)**
 3. **[Methodology](#methodology)**
 4. **[Evaluation](#evaluation)**
-5. **[Limitations and Improvements](#limitations-and-improvements)**
-6. **[Conclusion](#conclusion)**
+5. **[Conclusion](#conclusion)**
+6. **[Limitations and Improvements](#limitations-and-improvements)**
 7. **[References](#references)**
 
 ## Introduction
@@ -107,9 +107,11 @@ We used `Mean Squared Error (MSE)` for the loss function of the training and `Ro
 ### Hyperparameters
 The training process used $150$ epochs and the standard batch size of $32$.
 
-One thing to note is that `val_root_mean_squared_error` (validation RMSE) began to plateau around $120$ epochs whilst `root_mean_squared` (training RMSE) kept decreasing, thus we used a value close to that ($150$ epochs) to avoid the risk of overfitting.
+One thing to note is that `val_root_mean_squared_error` (validation RMSE) began to plateau around $120$ epochs whilst `root_mean_squared_error` (training RMSE) kept decreasing, thus we used a value close to that ($150$ epochs) to avoid the risk of overfitting.
 
-<img src="https://user-images.githubusercontent.com/26087840/233721404-abb860b9-07f2-40ef-b0b5-1be5257377ab.png" width="720px"></img>
+<img src="https://user-images.githubusercontent.com/26087840/233721404-abb860b9-07f2-40ef-b0b5-1be5257377ab.png" width="480px"><img src="https://user-images.githubusercontent.com/26087840/233774627-bb93bbde-6c06-4a9e-b9d6-5070c4b5330d.png" width="480px">
+
+
 
 
 
@@ -137,6 +139,9 @@ Using the training dataset, the Spearman correlation and the RMSE of the model i
 
 The same pattern also exhibits when the test data is used instead, meaning that it does not overfit to the training set. Therefore, it is suffice to say that our model is neither underfitting nor overfitting.
 
+## Conclusion
+To conclude, we have made a predictive model using an LSTM neural network. We included hour and lag features, and also carefully scale and split the data. In the end, our model was able to predict both the train and test data better than our baseline which is moving average of previous values. We believe that this model can be further optimized and tested to help solve one of the real world issues, which is traffic management.
+
 ## Limitations and Improvements
 Despite that our model is better than the baseline, there are several improvement that can be done to improve the performance:
 1. **Lower the time interval**
@@ -151,8 +156,7 @@ Despite that our model is better than the baseline, there are several improvemen
     - As the model uses more hidden layers and lag steps, the weight adjustment towards the earlier layers might become insignificant during the backpropagation, hindering the model in achieving higher performance.
     - This is an issue in `LSTM` layer, which is addressed in Attention Layers.
 
-## Conclusion
-To conclude, we have made a predictive model using an LSTM neural network. We included hour and lag features, and also carefully scale and split the data. In the end, our model was able to predict both the train and test data better than our baseline which is moving average of previous values. We believe that this model can be further optimized and tested to help solve one of the real world issues, which is traffic management.
+
 
 ## References
 - Guo, S., Lin, Y., Feng, N., Song, C., & Wan, H. (2019). Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. Proceedings of the AAAI Conference on Artificial Intelligence, 33(01), 922-929. https://doi.org/10.1609/aaai.v33i01.3301922.
